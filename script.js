@@ -6,7 +6,8 @@ window.onload = function() {
         os: navigator.platform
     };
 
-    fetch('https://55zyxaaql6.execute-api.us-east-1.amazonaws.com/prod', {
+    // Update with new URL if it changes
+    fetch('https://e8f2j963h4.execute-api.us-east-1.amazonaws.com/prod', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
