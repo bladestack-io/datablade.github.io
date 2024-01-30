@@ -1,13 +1,13 @@
 window.onload = function() {
     var userData = {
-        deviceId: 'some-unique-device-id', // Generate or define a unique ID
+        deviceId: 'device-' + Date.now(), // Simple unique ID generation
         browser: navigator.userAgent,
         screenSize: `${window.innerWidth} x ${window.innerHeight}`,
         os: navigator.platform
     };
 
-    // Update with new URL if it changes
-    fetch('https://0ih7adftx6.execute-api.us-east-1.amazonaws.com/prod/capture', {
+    // Update with API URL if it changes between deployments
+    fetch('https://0ih7adftx6.execute-api.us-east-1.amazonaws.com/prod', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -15,6 +15,11 @@ window.onload = function() {
         body: JSON.stringify(userData),
     })
     .then(response => response.json())
-    .then(data => console.log('Data sent successfully:', data))
-    .catch((error) => console.error('Error:', error));
+    .then(data => {
+        document.getElementById('result').innerText = 'Data sent successfully!';
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        document.getElementById('result').innerText = 'Failed to send data.';
+    });
 };
