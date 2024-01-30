@@ -7,7 +7,7 @@ window.onload = function() {
     };
 
     // Update with new URL if it changes
-    fetch('https://e8f2j963h4.execute-api.us-east-1.amazonaws.com/prod', {
+    fetch('https://0ih7adftx6.execute-api.us-east-1.amazonaws.com/prod/capture', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
