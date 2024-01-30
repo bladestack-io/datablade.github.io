@@ -6,13 +6,13 @@ exports.handler = async (event) => {
         // Assuming the body of the request is a JSON string
         const body = JSON.parse(event.body);
 
-        // Replace with DynamoDB table name if it changes
+        // Update DynamoDB table name if it changes
         const tableName = 'DeviceData';
 
         // Prepare the data for DynamoDB
         // Ensure the keys here match your DynamoDB table's column names
         const item = {
-            "DeviceID": body.deviceId, // This should match the primary key in your DynamoDB table
+            "DeviceID": body.deviceId, // This should match the primary key in DynamoDB table
             "Timestamp": new Date().toISOString(),
             "Browser": body.browser,
             "ScreenSize": body.screenSize,
@@ -38,15 +38,22 @@ exports.handler = async (event) => {
             }
         };
     } catch (error) {
-        console.error('Error capturing data:', error);
+        console.error('Error:', error);
 
-        // Error response
+        // Detailed error response
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: 'Error capturing data' }),
+            body: JSON.stringify({
+                message: 'Error capturing data',
+                error: {
+                    name: error.name,
+                    message: error.message,
+                    stack: error.stack
+                }
+            }),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*' // Update this for stricter CORS rules
+                'Access-Control-Allow-Origin': '*' // Adjust for production
             }
         };
     }
