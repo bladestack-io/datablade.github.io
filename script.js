@@ -6,20 +6,28 @@ window.onload = function() {
         os: navigator.platform
     };
 
-    // Update with API URL if it changes between deployments
-    fetch('https://05vc2ysui8.execute-api.us-east-1.amazonaws.com/prod', {
+    fetch('YOUR_API_GATEWAY_ENDPOINT', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
     })
-    .then(response => response.json())
+    .then(response => {
+        // Check if the response is successful
+        if (!response.ok) {
+            // If not successful, parse and throw the error
+            return response.json().then(errorData => {
+                throw new Error(`Error from server: ${errorData.error.message}`);
+            });
+        }
+        return response.json();
+    })
     .then(data => {
         document.getElementById('result').innerText = 'Data sent successfully!';
     })
     .catch((error) => {
         console.error('Error:', error);
-        document.getElementById('result').innerText = 'Failed to send data.';
+        document.getElementById('result').innerText = `Failed to send data: ${error.message}`;
     });
 };
