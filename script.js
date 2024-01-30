@@ -6,7 +6,7 @@ window.onload = function() {
         os: navigator.platform
     };
 
-    fetch('YOUR_API_GATEWAY_ENDPOINT', {
+    fetch('https://05vc2ysui8.execute-api.us-east-1.amazonaws.com/prod', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
