@@ -7,7 +7,7 @@ window.onload = function() {
     };
 
     // Update with API URL if it changes between deployments
-    fetch('https://0ih7adftx6.execute-api.us-east-1.amazonaws.com/prod', {
+    fetch('https://05vc2ysui8.execute-api.us-east-1.amazonaws.com/prod', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
