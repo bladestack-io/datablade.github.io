@@ -3,32 +3,39 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event) => {
     try {
-        // Parse the JSON body from the event
+        // Assuming the body of the request is a JSON string
         const body = JSON.parse(event.body);
 
-        // Extract device data from the body
-        const deviceData = {
-            DeviceID: body.deviceId,  // Ensure this ID is unique for each device
-            Timestamp: new Date().toISOString(),
-            Browser: body.browser,
-            ScreenSize: body.screenSize,
-            OS: body.os
+        // Replace with DynamoDB table name if it changes
+        const tableName = 'DeviceData';
+
+        // Prepare the data for DynamoDB
+        // Ensure the keys here match your DynamoDB table's column names
+        const item = {
+            "DeviceID": body.deviceId, // This should match the primary key in your DynamoDB table
+            "Timestamp": new Date().toISOString(),
+            "Browser": body.browser,
+            "ScreenSize": body.screenSize,
+            "OS": body.os
         };
 
-        // Define parameters for DynamoDB
+        // Parameters for DynamoDB
         const params = {
-            TableName: 'DeviceData', // Replace with your DynamoDB table name
-            Item: deviceData
+            TableName: tableName,
+            Item: item
         };
 
-        // Store the data in DynamoDB
+        // Write to DynamoDB
         await dynamoDB.put(params).promise();
 
-        // Success response
+        // Successful response
         return {
             statusCode: 200,
             body: JSON.stringify({ message: 'Data captured successfully' }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*' // Update this for stricter CORS rules
+            }
         };
     } catch (error) {
         console.error('Error capturing data:', error);
@@ -37,7 +44,10 @@ exports.handler = async (event) => {
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Error capturing data' }),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*' // Update this for stricter CORS rules
+            }
         };
     }
 };
