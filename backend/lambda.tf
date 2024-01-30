@@ -19,10 +19,10 @@ resource "aws_lambda_function" "data_capture_function" {
   function_name = "DataCaptureFunction"
 
   # Replace with the path to your Lambda deployment package
-  filename      = "./lambda/lambda.zip"
-  handler       = "index.handler" # Update handler accordingly
-  role          = aws_iam_role.lambda_role.arn
-  runtime       = "nodejs14.x" # Ensure this matches your Lambda's runtime
+  filename = "./lambda/lambda.zip"
+  handler  = "index.handler" # Update handler accordingly
+  role     = aws_iam_role.lambda_role.arn
+  runtime  = "nodejs14.x" # Ensure this matches your Lambda's runtime
 
   source_code_hash = filebase64sha256("./lambda/lambda.zip")
 }
