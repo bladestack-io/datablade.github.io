@@ -23,6 +23,17 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+resource "aws_lambda_permission" "lambda_permission" {
+  statement_id  = "AllowMyAPIInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = "DataCaptureFunction"
+  principal     = "apigateway.amazonaws.com"
+
+  # The /* part allows invocation from any stage, method and resource path
+  # within API Gateway.
+  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*"
+}
+
 # AWS Lambda Function
 resource "aws_lambda_function" "data_capture_function" {
   function_name = "DataCaptureFunction"
