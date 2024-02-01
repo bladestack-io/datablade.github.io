@@ -6,7 +6,7 @@ window.onload = function() {
         os: navigator.platform
     };
 
-    fetch('https://czupe2rnx1.execute-api.us-east-1.amazonaws.com/prod/capture', {
+    fetch('https://keny0faaw9.execute-api.us-east-1.amazonaws.com/prod/capture', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
