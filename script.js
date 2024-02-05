@@ -14,7 +14,7 @@ var userData = {
 };
 
 // Send the userData object to the backend
-fetch('https://keny0faaw9.execute-api.us-east-1.amazonaws.com/prod/capture', {
+fetch('https://8wzhd8iysi.execute-api.us-east-1.amazonaws.com/prod/capture', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
