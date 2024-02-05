@@ -126,3 +126,7 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 output "api_endpoint" {
   value = "${aws_api_gateway_rest_api.api.execution_arn}/prod/capture"
 }
+
+output "rest_api_id" {
+  value = aws_api_gateway_deployment.api_deployment.invoke_url
+}
