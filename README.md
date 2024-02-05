@@ -6,7 +6,7 @@ The web page is hosted by GitHub pages. You can directly visit this URL or scan 
 
 URL - https://bladestack-io.github.io/datablade.github.io/
 
-<img src="images/datablade_qr_code.png" width="200" height="200">
+<img src="images/datablade_qr_code.png" width="200" height="200" alt="QR Code">
 
 # Architecture
 **Frontend:** A static web page hosted on GitHub Pages that captures device information using JavaScript.
