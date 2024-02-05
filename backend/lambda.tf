@@ -17,31 +17,56 @@ resource "aws_iam_role" "lambda_role" {
 }
 
 # Attach the AWS managed basic execution role to the Lambda function
-# This allows the function to create and write to CloudWatch log groups
 resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+# Policy for DynamoDB Access
+resource "aws_iam_policy" "dynamodb_access" {
+  name        = "DynamoDBAccessForLambda"
+  description = "Allow Lambda function to access DynamoDB table"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Action = [
+          "dynamodb:PutItem",
+          "dynamodb:GetItem",
+          "dynamodb:UpdateItem",
+          "dynamodb:Query",
+          "dynamodb:Scan",
+          "dynamodb:DeleteItem"
+        ],
+        Effect   = "Allow",
+        Resource = "arn:aws:dynamodb:us-east-1:028457440238:table/DeviceData"
+      },
+    ],
+  })
+}
+
+# Attach DynamoDB Access Policy to the Lambda Execution Role
+resource "aws_iam_role_policy_attachment" "dynamodb_access_attachment" {
+  role       = aws_iam_role.lambda_role.name
+  policy_arn = aws_iam_policy.dynamodb_access.arn
+}
+
 resource "aws_lambda_permission" "lambda_permission" {
   statement_id  = "AllowMyAPIInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "DataCaptureFunction"
+  function_name = aws_lambda_function.data_capture_function.function_name
   principal     = "apigateway.amazonaws.com"
-
-  # The /* part allows invocation from any stage, method and resource path
-  # within API Gateway.
-  source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*"
+  source_arn    = "${aws_api_gateway_rest_api.api.execution_arn}/*"
 }
 
 # AWS Lambda Function
 resource "aws_lambda_function" "data_capture_function" {
-  function_name = "DataCaptureFunction"
-  filename      = "./lambda/lambda.zip"
-  handler       = "index.handler"
-  role          = aws_iam_role.lambda_role.arn
-  runtime       = "nodejs20.x"
-
+  function_name    = "DataCaptureFunction"
+  filename         = "./lambda/lambda.zip"
+  handler          = "index.handler"
+  role             = aws_iam_role.lambda_role.arn
+  runtime          = "nodejs20.x"
   source_code_hash = filebase64sha256("./lambda/lambda.zip")
 }
 
