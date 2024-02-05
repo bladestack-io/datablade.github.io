@@ -17,6 +17,18 @@ var userData = {
 // TODO: Remove this logging after verification
 console.log('Captured user data:', userData);
 
+
+// Display the captured information on the web page
+document.getElementById('capturedData').innerHTML = `
+    <p><strong>Device ID:</strong> ${userData.deviceId}</p>
+    <p><strong>Browser Name:</strong> ${userData.browserName}</p>
+    <p><strong>Browser Version:</strong> ${userData.browserVersion}</p>
+    <p><strong>OS:</strong> ${userData.os}</p>
+    <p><strong>Device Type:</strong> ${userData.deviceType}</p>
+    <p><strong>Device Vendor:</strong> ${userData.deviceVendor}</p>
+    <p><strong>Device Model:</strong> ${userData.deviceModel}</p>
+`;
+
 // The following part is where you would send userData to your backend.
 // Temporarily commented out for testing. Uncomment to enable.
 /*
