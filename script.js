@@ -13,39 +13,25 @@ var userData = {
     deviceModel: result.device.model || 'unknown' // Device model
 };
 
-// Testing: Log the captured information to the console
-// TODO: Remove this logging after verification
-console.log('Captured user data:', userData);
-
-
-// Display the captured information on the web page
-document.getElementById('capturedData').innerHTML = `
-    <p><strong>Device ID:</strong> ${userData.deviceId}</p>
-    <p><strong>Browser Name:</strong> ${userData.browserName}</p>
-    <p><strong>Browser Version:</strong> ${userData.browserVersion}</p>
-    <p><strong>OS:</strong> ${userData.os}</p>
-    <p><strong>Device Type:</strong> ${userData.deviceType}</p>
-    <p><strong>Device Vendor:</strong> ${userData.deviceVendor}</p>
-    <p><strong>Device Model:</strong> ${userData.deviceModel}</p>
-`;
-
-// The following part is where you would send userData to your backend.
-// Temporarily commented out for testing. Uncomment to enable.
-/*
-fetch('YOUR_API_GATEWAY_ENDPOINT', {
+// Send the userData object to the backend
+fetch('https://keny0faaw9.execute-api.us-east-1.amazonaws.com/prod/capture', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify(userData),
 })
-.then(response => response.json())
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
 .then(data => {
+    console.log('Data sent successfully:', data);
     document.getElementById('result').innerText = 'Data sent successfully!';
 })
-.catch((error) => {
-    console.error('Error:', error);
+.catch(error => {
+    console.error('Failed to send data:', error);
     document.getElementById('result').innerText = `Failed to send data: ${error.message}`;
 });
-*/
-
