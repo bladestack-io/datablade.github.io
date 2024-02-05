@@ -6,23 +6,18 @@ exports.handler = async (event) => {
         // Assuming the body of the request is a JSON string
         const body = JSON.parse(event.body);
 
-        // Update DynamoDB table name if it changes
-        const tableName = 'DeviceData';
-
-        // Prepare the data for DynamoDB
-        // Ensure the keys here match your DynamoDB table's column names
-        const item = {
-            "DeviceID": body.deviceId, // This should match the primary key in DynamoDB table
-            "Timestamp": new Date().toISOString(),
-            "Browser": body.browser,
-            "ScreenSize": body.screenSize,
-            "OS": body.os
-        };
-
-        // Parameters for DynamoDB
         const params = {
-            TableName: tableName,
-            Item: item
+            TableName: 'DeviceData', // Update DynamoDB table name if it changes
+            Item: {
+                DeviceID: body.deviceId, // Use the unique deviceId as the primary key
+                BrowserName: body.browserName,
+                BrowserVersion: body.browserVersion,
+                OS: body.os,
+                DeviceType: body.deviceType,
+                DeviceVendor: body.deviceVendor,
+                DeviceModel: body.deviceModel,
+                Timestamp: new Date().toISOString() // Add a timestamp for when the data was inserted
+            }
         };
 
         // Write to DynamoDB
