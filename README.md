@@ -30,7 +30,7 @@ URL - https://bladestack-io.github.io/datablade.github.io/
 Navigate to the backend directory containing the Terraform configuration files.
 
 ```
-$ cd backend
+cd backend
 ```
 
 ## Initialize Terraform and apply the configuration:
