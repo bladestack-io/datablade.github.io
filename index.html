@@ -3,18 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Device Data Capture</title>
+    <title>Device Data and GPT Prompt Submission</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Device Data Capture</h1>
-    <p>Collecting basic device information...</p>
-    <!-- Div to display the result message -->
-    <div id="result">Waiting for data...</div>
-    
-    <!-- Include ua-parser-js from a CDN for device info parsing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js"></script>
-    <!-- Your script.js file -->
+    <div class="container">
+        <header>
+            <h1>Welcome to Our GPT Prompt Submission Platform</h1>
+            <p>Share your prompt and see how AI responds. We also capture basic device information to improve your experience.</p>
+        </header>
+
+        <section class="form-container">
+            <h2>Submit Your GPT Prompt</h2>
+            <form id="promptForm">
+                <textarea id="gptPrompt" name="gptPrompt" rows="4" placeholder="Enter your GPT prompt here..."></textarea>
+                <button type="submit">Submit Prompt</button>
+            </form>
+        </section>
+
+        <section id="result" class="result-section">
+            <!-- Results or messages will be displayed here -->
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.37/ua-parser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
