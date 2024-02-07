@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Device Data and GPT Prompt Submission</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Welcome to Our GPT Prompt Submission Platform</h1>
-            <p>Share your prompt and see how AI responds. We also capture basic device information to improve your experience.</p>
+            <p>Share your prompt and see how AI responds. We also capture basic device information to improve your
+                experience.</p>
         </header>
 
         <section class="form-container">
             <h2>Submit Your GPT Prompt</h2>
-            <form id="promptForm">
-                <textarea id="gptPrompt" name="gptPrompt" rows="4" placeholder="Enter your GPT prompt here..."></textarea>
-                <button type="submit">Submit Prompt</button>
-            </form>
+            <div class="google-form-embed">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeelUTk4Q6_YMVvH2KSJSKd0F_q5kKCyQSRH0tEj-td6kI4-w/viewform?embedded=true"
+                    width="640" height="407" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
         </section>
 
         <section id="result" class="result-section">
             <!-- Results or messages will be displayed here -->
         </section>
     </div>
+    <!-- Replace 'your_embed_code_here' with the actual embed code from Google Forms -->
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.37/ua-parser.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
