@@ -1,20 +1,31 @@
+/* Base styles */
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f7;
+    background-color: #021327;
     color: #333;
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
-    max-width: 960px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #021327;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     border-radius: 8px;
+    width: auto;
+    max-width: 960px;
 }
 
+.company-logo {
+    max-width: 100%; /* Adjust based on your logo size */
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
 header {
     text-align: center;
     padding-bottom: 20px;
@@ -23,7 +34,7 @@ header {
 }
 
 h1 {
-    color: #007bff;
+    color: #007bff; /* Adjust to a brand color */
 }
 
 .form-container {
@@ -46,7 +57,7 @@ textarea {
 
 button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #3d0349;
     color: white;
     border: none;
     border-radius: 4px;
@@ -65,3 +76,61 @@ button:hover {
     border-radius: 4px;
     margin-top: 20px;
 }
+
+
+/* Responsive adjustments for mobile devices*/
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .company-logo {
+        max-width: 80px; /* Slightly smaller logo for smaller screens */
+    }
+
+    .google-form-embed iframe {
+        width: 100%!important; /* Make the Google Form iframe fully responsive */
+        height: 500px; /* Adjust height as needed */
+    }
+
+    header, .form-container, .result-section {
+        padding: 10px;
+        text-align: center; /* Center align text for better readability on small screens */
+    }
+
+    form textarea, form button {
+        width: 100%; /* Full-width form elements */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .company-logo {
+        max-width: 60px; /* Even smaller logo for very small screens */
+    }
+    
+    .google-form-embed iframe {
+        height: 400px; /* Shorter form for very small screens */
+    }
+}
+
+@keyframes wobbleLogo {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  .animated-logo {
+    display: block;
+    margin: auto; /* Center the logo if it's not already */
+    animation: wobbleLogo 5.5s infinite ease-in-out;
+  }
+  
