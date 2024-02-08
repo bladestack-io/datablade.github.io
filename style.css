@@ -3,7 +3,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Roboto Slab", sans-serif;
     background-color: #021327;
     color: #333;
     background-size: cover;
@@ -30,6 +30,9 @@ header {
 .animated-logo {
     max-width: 20%;
     justify-content: left;
+    display: block;
+    margin: auto; /* Center the logo if it's not already */
+    animation: wobbleLogo 5.5s infinite ease-in-out;
 }
 
 .logo-banner {
@@ -39,12 +42,15 @@ header {
     justify-content: right;
 }
 
-.animated-logo {
-    animation: wobbleLogo 1.5s infinite ease-in-out; /* Apply your animation */
-}
-
 .header-text {
     margin-top: 20px; /* Add some space between the logos and the text */
+}
+
+.header-text p {
+    color: #f1e7fd; /* Example: sets the text color */
+    font-size: 16px; /* Example: sets the font size */
+    margin-bottom: 20px; /* Example: adds space below the paragraph */
+    line-height: 1.5; /* Example: adjusts the line height for better readability */
 }
 
 
@@ -70,13 +76,6 @@ h1 {
     border: none; /* Removes the border */
     margin: 0; /* Adjusts margin */
 }
-
-.animated-logo {
-    display: block;
-    margin: auto; /* Center the logo if it's not already */
-    animation: wobbleLogo 5.5s infinite ease-in-out;
-  }
-  
 
 /* Responsive adjustments for mobile devices*/
 @media (max-width: 768px) {
