@@ -33,14 +33,16 @@ header {
     max-width: 20%;
     justify-content: left;
     display: block;
-    margin: auto; /* Center the logo if it's not already */
+    margin-left: auto; /* Right-justifies the logo within the container to maintain center in large screen */
+    margin-right: 0;
     animation: wobbleLogo 5.5s infinite ease-in-out; /* Adjust the animation speed */
 }
 
 .logo-banner {
     max-width: 80%; /* Adjust based on your logo sizes */
     height: auto;
-    margin: 0 10px; /* Add some space between the logos */
+    margin-left:10px; /* Add some space between the logos */
+    margin-right: auto; /* Left-justifies the banner within the container to maintain center in large screen */
     justify-content: right;
 }
 
