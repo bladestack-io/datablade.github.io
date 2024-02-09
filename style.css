@@ -1,5 +1,4 @@
 /* Base styles */
-
 body, html {
     margin: 0;
     padding: 0;
@@ -8,6 +7,9 @@ body, html {
     color: #333;
     background-size: cover;
     background-position: center;
+    background-image: url('PATH_TO_IMAGE'); /* TODO add image if desired.  */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Optional: Makes the background image fixed during scroll */
 }
 
 header {
@@ -32,7 +34,7 @@ header {
     justify-content: left;
     display: block;
     margin: auto; /* Center the logo if it's not already */
-    animation: wobbleLogo 5.5s infinite ease-in-out;
+    animation: wobbleLogo 5.5s infinite ease-in-out; /* Adjust the animation speed */
 }
 
 .logo-banner {
@@ -47,15 +49,14 @@ header {
 }
 
 .header-text p {
-    color: #f1e7fd; /* Example: sets the text color */
-    font-size: 16px; /* Example: sets the font size */
-    margin-bottom: 20px; /* Example: adds space below the paragraph */
-    line-height: 1.5; /* Example: adjusts the line height for better readability */
+    color: #f1e7fd; /* Sets the text color */
+    font-size: 16px; /* Sets the font size */
+    margin-bottom: 20px; /* Adds space below the paragraph */
+    line-height: 1.5; /* Adjusts the line height for better readability */
 }
 
-
 h1 {
-    color: #007bff; /* Adjust to a brand color */
+    color: #007bff; /* TODO: Adjust to a brand color */
 }
 
 .form-container {
