@@ -32,7 +32,7 @@ header {
 .animated-logo {
     max-width: 20%;
     justify-content: left;
-    display: block;
+    display: flex;
     margin-left: auto; /* Right-justifies the logo within the container to maintain center in large screen */
     margin-right: 0;
     animation: wobbleLogo 5.5s infinite ease-in-out; /* Adjust the animation speed */
