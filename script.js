@@ -21,17 +21,17 @@ fetch('https://8wzhd8iysi.execute-api.us-east-1.amazonaws.com/prod/capture', {
     },
     body: JSON.stringify(userData),
 })
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
-})
-.then(data => {
-    console.log('Data sent successfully:', data);
-    document.getElementById('result').innerText = 'Data sent successfully!';
-})
-.catch(error => {
-    console.error('Failed to send data:', error);
-    document.getElementById('result').innerText = `Failed to send data: ${error.message}`;
-});
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data sent successfully:', data);
+        document.getElementById('result').innerText = 'Data sent successfully!';
+    })
+    .catch(error => {
+        console.error('Failed to send data:', error);
+        document.getElementById('result').innerText = `Failed to send data: ${error.message}`;
+    });
